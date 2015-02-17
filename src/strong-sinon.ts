@@ -10,6 +10,13 @@ module Main {
         return capturedFunc;
     }
 
+    export function objMethod<TFunc>(obj: any, method: string): CapturedFunc<TFunc> {
+        var spy = sinon.spy(obj, method),
+            capturedFunc = <CapturedFunc<TFunc>>spy;
+        capturedFunc.fn = <any>spy;
+        return capturedFunc;
+    }
+
     export interface CapturedFunc<TFunc> extends SinonSpy {
         fn: TFunc;
     }

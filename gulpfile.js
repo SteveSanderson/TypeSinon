@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     ts = require('gulp-typescript'),
-    merge = require('merge2');
+    merge = require('merge2'),
+    watch = require('gulp-watch');
 
 gulp.task('default', function() {
     var tsResult = gulp.src('src/**/*.ts').pipe(ts({
@@ -14,4 +15,8 @@ gulp.task('default', function() {
         tsResult.js.pipe(gulp.dest('dist')),
         gulp.src('src/**/*.html').pipe(gulp.dest('dist'))
     ]);
+});
+
+gulp.task('watch', function () {
+    gulp.watch('src/**', ['default']);
 });
