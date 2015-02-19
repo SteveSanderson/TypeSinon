@@ -1,7 +1,7 @@
 define(["require", "exports", "../../strong-sinon", "App"], function (require, exports, capture, App) {
     //test 1: should change state from stopped to started on power button press
     // Arrange
-    var engine = new App.Engine("stopped"), engineStartSpy = capture.objMethod(engine, "start");
+    var engine = new App.Engine("stopped"), engineStartSpy = capture.wrapMethod(engine, engine.start);
     // Act
     engine.pressPowerButton();
     // Assert
@@ -9,7 +9,7 @@ define(["require", "exports", "../../strong-sinon", "App"], function (require, e
     console.log(engine.getState(), "started");
     // test 2: should change state from started to stopped on power button press
     // Arrange
-    var engine = new App.Engine("started"), engineStopSpy = capture.objMethod(engine, "stop");
+    var engine = new App.Engine("started"), engineStopSpy = capture.wrapMethod(engine, engine.stop);
     // Act
     engine.pressPowerButton();
     // Assert

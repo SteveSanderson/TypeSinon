@@ -7,12 +7,15 @@ define(["require", "exports", "sinon"], function (require, exports) {
             return capturedFunc;
         }
         Main.func = func;
-        function objMethod(obj, method) {
-            var spy = sinon.spy(obj, method), capturedFunc = spy;
-            capturedFunc.fn = spy;
-            return capturedFunc;
+        function wrapMethod(obj, method) {
+            for (var key in obj) {
+                if (obj[key] === method) {
+                    return (obj[key] = func(method));
+                }
+            }
+            throw new Error("Method found on object.\nMethod: " + method + "\nObject: " + obj);
         }
-        Main.objMethod = objMethod;
+        Main.wrapMethod = wrapMethod;
     })(Main || (Main = {}));
     return Main;
 });

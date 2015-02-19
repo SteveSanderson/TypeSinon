@@ -2,7 +2,7 @@
 export = Main;
 declare module Main {
     function func<TFunc>(fn?: TFunc): CapturedFunc<TFunc>;
-    function objMethod<TFunc>(obj: any, method: string): CapturedFunc<TFunc>;
+    function wrapMethod<TFunc extends Function>(obj: any, method: TFunc): CapturedFunc<TFunc>;
     interface CapturedFunc<TFunc> extends SinonSpy {
         fn: TFunc;
     }
