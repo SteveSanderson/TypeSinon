@@ -1,6 +1,7 @@
 /// <reference path="sinon.d.ts" />
 
 module TypeSinon {
+    "use strict";
 
     export function spy<TFunc>(fn?: TFunc): CapturedFunc<TFunc>;
     export function spy<TFunc>(obj: any, method: TFunc): CapturedFunc<TFunc>;

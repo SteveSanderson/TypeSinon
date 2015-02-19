@@ -1,6 +1,7 @@
 /// <reference path="sinon.d.ts" />
 var TypeSinon;
 (function (TypeSinon) {
+    "use strict";
     function spy(objOrFunc, method) {
         return method ? spyOnMethod(objOrFunc, method) : spyOnFunc(objOrFunc);
     }
