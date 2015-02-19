@@ -5,7 +5,7 @@ import App = require("App");
 
 // Arrange
 var engine = new App.Engine("stopped"),
-	engineStartSpy = capture.objMethod(engine, "start");
+	engineStartSpy = capture.wrapMethod(engine, engine.start);
 
 // Act
 engine.pressPowerButton();
@@ -19,7 +19,7 @@ console.log(engine.getState(), "started");
 
 // Arrange
 var engine = new App.Engine("started"),
-	engineStopSpy = capture.objMethod(engine, "stop");
+	engineStopSpy = capture.wrapMethod(engine, engine.stop);
 
 // Act
 engine.pressPowerButton();

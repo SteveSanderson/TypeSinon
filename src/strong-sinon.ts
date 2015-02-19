@@ -10,11 +10,15 @@ module Main {
         return capturedFunc;
     }
 
-    export function objMethod<TFunc>(obj: any, method: string): CapturedFunc<TFunc> {
-        var spy = sinon.spy(obj, method),
-            capturedFunc = <CapturedFunc<TFunc>>spy;
-        capturedFunc.fn = <any>spy;
-        return capturedFunc;
+    export function wrapMethod<TFunc extends Function>(obj: any, method: TFunc): CapturedFunc<TFunc> {
+        // Find the function and wrap it
+        for (var key in obj) {
+            if (obj[key] === method) {
+                return (obj[key] = func(method));
+            }
+        }
+
+        throw new Error("Method found on object.\nMethod: " + method + "\nObject: " + obj);
     }
 
     export interface CapturedFunc<TFunc> extends SinonSpy {
