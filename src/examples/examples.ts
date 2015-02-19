@@ -1,11 +1,11 @@
-import capture = require("../strong-sinon");
-import Zoo = require("Zoo");
-import Staff = require("Staff");
+/// <reference path="../TypeSinon.ts" />
+/// <reference path="Zoo.ts" />
+/// <reference path="Staff.ts" />
 
 // You can create function mocks that explicitly contain 'return' logic,
 // which implicitly strongly-types the mock to those params and return value types.
-var mockFeedAnimals = capture.func((name: string) => { /* no code, so return type is void */ }),
-    mockGetAnimals = capture.func((category: Zoo.AnimalCategory): Zoo.Animal[]=> {
+var mockFeedAnimals = TypeSinon.func((name: string) => { /* no code, so return type is void */ }),
+    mockGetAnimals = TypeSinon.func((category: Zoo.AnimalCategory): Zoo.Animal[]=> {
         if (category == Zoo.AnimalCategory.Reptiles) {
             return [{ name: "Godzilla" }, { name: "T-Rex" }];
         } else {
@@ -15,7 +15,7 @@ var mockFeedAnimals = capture.func((name: string) => { /* no code, so return typ
 
 // ... or you can just specify the signature with generics without giving an implementation.
 // If you call it, it will return 'undefined'.
-var mockBeginSelfDestruct = capture.func<(string) => void>();
+var mockBeginSelfDestruct = TypeSinon.func<(string) => void>();
 
 // Now you can use the function mocks to implement an interface
 var mockZooService: Zoo.ZooService = {

@@ -1,9 +1,7 @@
-export = Main;
-
 /**
  * Some interfaces that will be mocked in tests.
  */
-module Main {
+module Zoo {
     export interface Animal {
         name: string;
     }

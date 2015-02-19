@@ -1,8 +1,6 @@
-import Zoo = require("Zoo");
+/// <reference path="zoo.ts" />
 
-export = Main;
-
-module Main {
+module Staff {
     /**
      * A class that can be tested.
      */

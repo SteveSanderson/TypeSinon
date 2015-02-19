@@ -1,6 +1,5 @@
-export = Main;
 
-module Main {
+module App {
     /**
      * A class that can be tested.
      */

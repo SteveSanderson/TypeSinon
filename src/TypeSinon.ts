@@ -1,8 +1,6 @@
 /// <reference path="sinon.d.ts" />
-/// <amd-dependency path="sinon" />
-export = Main;
 
-module Main {
+module TypeSinon {
     export function func<TFunc>(fn?: TFunc): CapturedFunc<TFunc> {
         var spy = sinon.spy(fn),
             capturedFunc = <CapturedFunc<TFunc>>spy;

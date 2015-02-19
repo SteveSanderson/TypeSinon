@@ -6,8 +6,7 @@ var gulp = require('gulp'),
 gulp.task('default', function() {
     var tsResult = gulp.src('src/**/*.ts').pipe(ts({
         declarationFiles: true,
-        noExternalResolve: true,
-        module: 'amd'
+        noExternalResolve: true
     }));
 
     return merge([

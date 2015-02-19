@@ -1,11 +1,12 @@
-import capture = require("../../strong-sinon");
-import App = require("App");
+/// <reference path="../../TypeSinon.ts" />
+/// <reference path="App.ts" />
+
 
 //test 1: should change state from stopped to started on power button press
 
 // Arrange
 var engine = new App.Engine("stopped"),
-	engineStartSpy = capture.wrapMethod(engine, engine.start);
+	engineStartSpy = TypeSinon.wrapMethod(engine, engine.start);
 
 // Act
 engine.pressPowerButton();
@@ -19,7 +20,7 @@ console.log(engine.getState(), "started");
 
 // Arrange
 var engine = new App.Engine("started"),
-	engineStopSpy = capture.wrapMethod(engine, engine.stop);
+    engineStopSpy = TypeSinon.wrapMethod(engine, engine.stop);
 
 // Act
 engine.pressPowerButton();
