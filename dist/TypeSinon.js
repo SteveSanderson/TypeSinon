@@ -17,6 +17,20 @@ var TypeSinon;
                 return (obj[key] = spyOnFunc(method));
             }
         }
-        throw new Error("Method found on object.\nMethod: " + method + "\nObject: " + obj);
+        throw new Error("Method not found on object.\nMethod: " + method + "\nObject: " + obj);
     }
+    function stub(obj, method, fn) {
+        if (obj && method) {
+            for (var key in obj) {
+                if (obj[key] === method) {
+                    return sinon.stub(obj, key, fn);
+                }
+            }
+            throw new Error("Method not found on object.\nMethod: " + method + "\nObject: " + obj);
+        }
+        else {
+            return sinon.stub(obj);
+        }
+    }
+    TypeSinon.stub = stub;
 })(TypeSinon || (TypeSinon = {}));

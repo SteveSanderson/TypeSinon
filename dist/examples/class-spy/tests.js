@@ -1,5 +1,5 @@
 /// <reference path="../../TypeSinon.ts" />
-/// <reference path="App.ts" />
+/// <reference path="../App.ts" />
 //test 1: should change state from stopped to started on power button press
 // Arrange
 var engine = new App.Engine("stopped"), engineStartSpy = TypeSinon.spy(engine, engine.start);

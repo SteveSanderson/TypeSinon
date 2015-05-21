@@ -1,4 +1,3 @@
-
 module App {
     /**
      * A class that can be tested.

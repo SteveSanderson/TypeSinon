@@ -18,6 +18,7 @@ module Staff {
             myAnimals.forEach((animal) => {
                 this._zooService.feedAnimalByName(animal.name);
             });
+            console.log("Employee duties performed.");
         }
     }
 }

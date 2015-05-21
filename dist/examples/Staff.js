@@ -15,6 +15,7 @@ var Staff;
             myAnimals.forEach(function (animal) {
                 _this._zooService.feedAnimalByName(animal.name);
             });
+            console.log("Employee duties performed.");
         };
         return Employee;
     })();
