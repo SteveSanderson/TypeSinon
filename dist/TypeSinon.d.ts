@@ -5,4 +5,5 @@ declare module TypeSinon {
     interface Spy<TFunc> extends SinonSpy {
         fn: TFunc;
     }
+    function stub<TFunc>(obj?: any, method?: TFunc, fn?: TFunc): SinonStub;
 }

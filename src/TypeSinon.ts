@@ -24,10 +24,25 @@ module TypeSinon {
             }
         }
 
-        throw new Error("Method found on object.\nMethod: " + method + "\nObject: " + obj);
+        throw new Error("Method not found on object.\nMethod: " + method + "\nObject: " + obj);
     }
 
     export interface Spy<TFunc> extends SinonSpy {
         fn: TFunc;
+    }
+    
+    export function stub<TFunc>(obj?: any, method?: TFunc, fn?: TFunc): SinonStub {
+    	if (obj && method) {
+			// Find the function and stub it
+	        for (var key in obj) {
+	            if (obj[key] === method) {
+					return sinon.stub(obj, key, fn);
+	            }
+	        }
+
+	        throw new Error("Method not found on object.\nMethod: " + method + "\nObject: " + obj);
+    	} else {
+			return sinon.stub(obj);
+    	}
     }
 }
